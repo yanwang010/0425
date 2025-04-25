@@ -1,0 +1,296 @@
+/* 全螢幕背景樣式 */
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #dad7cd;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* 選單樣式 */
+.menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.menu ul li {
+  position: relative;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  background: #fff;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.menu ul li a:hover {
+  background: #ccc;
+}
+
+/* 子選單樣式 */
+.submenu {
+  display: none; /* 預設隱藏子選單 */
+  position: absolute;
+  top: 100%; /* 子選單緊接著主選單下方 */
+  left: 0; /* 子選單與主選單左對齊 */
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  opacity: 0; /* 預設為透明 */
+  visibility: hidden; /* 預設為不可見 */
+  transform: translateY(-10px); /* 初始位置稍微向上 */
+  pointer-events: none; /* 防止隱藏時的點擊 */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* 平滑過渡 */
+  padding: 0; /* 移除多餘內邊距 */
+  width: 150px; /* 固定寬度，避免延伸 */
+}
+
+/* 子選單項目直列排列 */
+.submenu li {
+  display: block; /* 每個項目獨占一行 */
+  margin: 0; /* 移除項目間距 */
+  border-bottom: 1px solid #ddd; /* 增加分隔線 */
+}
+
+.submenu li:last-child {
+  border-bottom: none; /* 移除最後一項的分隔線 */
+}
+
+/* 子選單項目文字橫向排列 */
+.submenu li a {
+  display: block; /* 讓文字填滿整個項目 */
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px; /* 增加內邊距 */
+  background: #fff;
+  white-space: nowrap; /* 確保文字不換行 */
+  transition: background 0.3s, color 0.3s; /* 平滑過渡效果 */
+}
+
+/* 子選單項目 hover 效果 */
+.submenu li a:hover {
+  background: #ccc; /* 改變背景顏色 */
+  color: #000; /* 改變文字顏色 */
+}
+
+/* 當滑鼠移動到作品集時顯示子選單 */
+.dropdown:hover > .submenu {
+   display: block; /* 顯示子選單 */
+  opacity: 1; /* 透明度變為完全可見 */
+  visibility: visible; /* 設為可見 */
+  transform: translateY(0); /* 回到原始位置 */
+  pointer-events: auto; /* 啟用子選單的點擊事件 */
+}
+
+/* 畫布樣式 */
+canvas {
+  display: block;
+}
+
+/* 自我介紹視窗樣式 */
+.modal {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+/* 模態視窗樣式 */
+#codeModal {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#codeModal .modal-content {
+  background-color: white;
+  color: black;
+  padding: 0;
+  border-radius: 10px;
+  width: 80%; /* 調整寬度 */
+  max-width: 800px; /* 最大寬度 */
+  height: 80%; /* 調整高度 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#codeModal .modal-content button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#codeModal .modal-content button:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+#modalIframe {
+  flex: 1;
+  border: none;
+}
+
+#p5CanvasContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 自我介紹模態視窗樣式 */
+#aboutModal {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#aboutModal .modal-content {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%; /* 調整寬度 */
+  max-width: 800px; /* 最大寬度 */
+  height: 80%; /* 調整高度 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#aboutModal .modal-content button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#aboutModal .modal-content button:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+#aboutModal .about-content p {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 教學影片模態視窗樣式 */
+#videoModal {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#videoModal .modal-content {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%; /* 調整寬度 */
+  max-width: 800px; /* 最大寬度 */
+  height: 80%; /* 調整高度 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#videoModal .modal-content button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#videoModal .modal-content button:hover {
+  background-color: #ccc;
+  color: black;
+}
